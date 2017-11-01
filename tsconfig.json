@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
+    "baseUrl": "src",
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
@@ -14,6 +15,11 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@core/*": ["app/common/core/*"],
+      "@shared/*": ["app/common/shared/*"],
+      "@environments/*": ["environments/*"]
+    }
   }
 }

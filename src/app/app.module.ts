@@ -1,6 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { AuthInterceptor } from '@core/interceptors';
+
+import { GroupsService } from './common/core/services/groups.service';
 
 import { AppComponent } from './app.component';
 import { GroupListComponent } from './features/main/features/groups/group-list/group-list.component';
@@ -20,9 +26,17 @@ import { StudentsListComponent } from './features/main/features/students/student
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    GroupsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
