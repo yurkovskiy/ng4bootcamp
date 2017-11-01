@@ -1,9 +1,9 @@
 <nav class="navbar navbar-light bg-faded rounded">
   <ul class="navbar-nav mr-auto">
-    <li class="nav-item" ngClass="[{'active': currentRoute === 'my_groups'}]">
+    <li class="nav-item" [ngClass]="{'active': currentRoute === 'my_groups'}">
       <a class="nav-link" (click)="changeRoute('my_groups')">Groups</a>
     </li>
-    <li class="nav-item" ngClass="[{'active': currentRoute === 'my_students'}]">
+    <li class="nav-item" [ngClass]="{'active': currentRoute === 'my_students'}">
       <a class="nav-link" (click)="changeRoute('my_students')">Students</a>
     </li>
   </ul>

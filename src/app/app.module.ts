@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { GroupListComponent } from './features/main/features/groups/group-list/group-list.component';
 import { GroupItemComponent } from './features/main/features/groups/group-item/group-item.component';
 import { HeaderComponent } from './common/shared/header/header.component';
@@ -13,7 +12,6 @@ import { StudentsListComponent } from './features/main/features/students/student
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     GroupListComponent,
     GroupItemComponent,
     HeaderComponent,

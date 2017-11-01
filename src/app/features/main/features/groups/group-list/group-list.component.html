@@ -1,8 +1,6 @@
 <h1>My groups</h1>
 <input name="search" #search>
 <button (click)="filterGroups(search)">Search</button>
-
-{{ groups | json }}
 <div *ngFor="let group of groups">
   <app-group-item
     *ngIf="(group.name === searchText) || searchText == ''"
