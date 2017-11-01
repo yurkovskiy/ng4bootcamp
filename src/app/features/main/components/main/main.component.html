@@ -1,0 +1,8 @@
+<app-header
+  [currentRoute]="currentRoute"
+  (routeChanged)="currentRoute = $event"></app-header>
+
+<div class="container">
+  <app-group-list *ngIf="currentRoute === 'my_groups'"></app-group-list>
+  <app-students-list *ngIf="currentRoute === 'my_students'"></app-students-list>
+</div>
