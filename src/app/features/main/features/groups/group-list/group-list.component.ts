@@ -1,4 +1,5 @@
 import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 
 import { GroupsService } from '@core/services';
 import { Observable } from 'rxjs/Observable';
@@ -7,6 +8,8 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/distinct';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/observable/interval';
+
+import { AddSubjectComponent } from '@shared/add-subject/add-subject.component';
 
 @Component({
   selector: 'app-group-list',
@@ -20,7 +23,8 @@ export class GroupListComponent implements OnInit, OnDestroy {
   private test$: Subscription;
   @ViewChild('search') searchInput;
 
-  constructor(private groupsService: GroupsService) {}
+  constructor(private groupsService: GroupsService,
+              private modalService: NgbModal) {}
 
   ngOnInit(): void {
     this.groupsss = Observable.interval(1000)
@@ -38,6 +42,16 @@ export class GroupListComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.groups$.unsubscribe();
     // this.test$.unsubscribe();
+  }
+
+  addNew() {
+    const modalRef: NgbModalRef = this.modalService.open(AddSubjectComponent);
+    modalRef.componentInstance.data = 'test';
+    modalRef.result.then((result: boolean) => {
+      console.log('ok', result);
+    }, () => {
+      console.log('cancel');
+    });
   }
 
   filterGroups() {

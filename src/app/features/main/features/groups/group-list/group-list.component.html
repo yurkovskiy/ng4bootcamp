@@ -1,4 +1,5 @@
 <h1>My groups</h1>
+<button (click)="addNew()">Add new subject</button>
 <input name="search" #search>
 <button (click)="filterGroups(search)">Search</button>
 <div *ngFor="let group of groupsss | async">

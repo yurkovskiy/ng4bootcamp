@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthInterceptor } from '@core/interceptors';
 
@@ -14,6 +15,7 @@ import { GroupItemComponent } from './features/main/features/groups/group-item/g
 import { HeaderComponent } from './common/shared/header/header.component';
 import { MainComponent } from './features/main/components/main/main.component';
 import { StudentsListComponent } from './features/main/features/students/students-list/students-list.component';
+import { AddSubjectComponent } from './common/shared/add-subject/add-subject.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +24,14 @@ import { StudentsListComponent } from './features/main/features/students/student
     GroupItemComponent,
     HeaderComponent,
     MainComponent,
-    StudentsListComponent
+    StudentsListComponent,
+    AddSubjectComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule.forRoot()
   ],
   providers: [
     {
@@ -37,6 +41,9 @@ import { StudentsListComponent } from './features/main/features/students/student
     },
     AuthService,
     GroupsService
+  ],
+  entryComponents: [
+    AddSubjectComponent
   ],
   bootstrap: [AppComponent]
 })
