@@ -7,4 +7,6 @@
       <a class="nav-link" (click)="changeRoute('my_students')">Students</a>
     </li>
   </ul>
+  <button *ngIf="!(isLoggedIn | async)" (click)="login(true)">Login</button>
+  <button *ngIf="isLoggedIn | async" (click)="login(false)">Logout</button>
 </nav>

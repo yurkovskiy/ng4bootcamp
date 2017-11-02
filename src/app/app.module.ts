@@ -6,7 +6,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AuthInterceptor } from '@core/interceptors';
 
-import { GroupsService } from './common/core/services/groups.service';
+import { AuthService, GroupsService } from '@core/services';
 
 import { AppComponent } from './app.component';
 import { GroupListComponent } from './features/main/features/groups/group-list/group-list.component';
@@ -35,6 +35,7 @@ import { StudentsListComponent } from './features/main/features/students/student
       useClass: AuthInterceptor,
       multi: true
     },
+    AuthService,
     GroupsService
   ],
   bootstrap: [AppComponent]

@@ -1,7 +1,7 @@
 <h1>My groups</h1>
 <input name="search" #search>
 <button (click)="filterGroups(search)">Search</button>
-<div *ngFor="let group of groups">
+<div *ngFor="let group of groupsss | async">
   <app-group-item
     *ngIf="(group.group_name === searchText) || searchText == ''"
     [group]="group"></app-group-item>
