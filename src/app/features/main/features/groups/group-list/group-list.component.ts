@@ -1,37 +1,37 @@
 import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 
-import { GroupsService } from '../../../../../common/core/services/groups.service';
+import { GroupsService } from '@core/services/groups.service';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/observable/forkJoin';
-import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/observable/interval';
 
 @Component({
   selector: 'app-group-list',
   templateUrl: './group-list.component.html'
 })
 export class GroupListComponent implements OnInit, OnDestroy {
-  groups;
+  groups: any[] = [];
   searchText = '';
   private groups$: Subscription;
-  specialities;
+  private test$: Subscription;
   @ViewChild('search') searchInput;
 
   constructor(private groupsService: GroupsService) {}
 
   ngOnInit(): void {
-    Observable.forkJoin(
-      this.groupsService.getGroups(),
-      this.groupsService.getStudents()
-    ).take(1).subscribe(data => {
-      console.log(data[0]);
-      this.groups = data[0];
+    this.test$ = Observable.interval(1000).subscribe(x => {
+      console.log(x);
+    });
+
+    this.groups$ = this.groupsService.getGroups().subscribe(data => {
+      this.groups = data;
     });
   }
 
   ngOnDestroy(): void {
     this.groups$.unsubscribe();
+    this.test$.unsubscribe();
   }
 
   filterGroups() {
