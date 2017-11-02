@@ -1,10 +1,10 @@
 <nav class="navbar navbar-light bg-faded rounded">
   <ul class="navbar-nav mr-auto">
-    <li class="nav-item" [ngClass]="{'active': currentRoute === 'my_groups'}">
-      <a class="nav-link" (click)="changeRoute('my_groups')">Groups</a>
+    <li class="nav-item" routerLinkActive="active">
+      <a class="nav-link" routerLink="groups">Groups</a>
     </li>
-    <li class="nav-item" [ngClass]="{'active': currentRoute === 'my_students'}">
-      <a class="nav-link" (click)="changeRoute('my_students')">Students</a>
+    <li class="nav-item" routerLinkActive="active">
+      <a class="nav-link" routerLink="students">Students</a>
     </li>
   </ul>
   <button *ngIf="!(isLoggedIn | async)" (click)="login(true)">Login</button>

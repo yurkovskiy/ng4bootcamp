@@ -1,5 +1,6 @@
 import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
-import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { GroupsService } from '@core/services';
 import { Observable } from 'rxjs/Observable';
@@ -24,9 +25,15 @@ export class GroupListComponent implements OnInit, OnDestroy {
   @ViewChild('search') searchInput;
 
   constructor(private groupsService: GroupsService,
-              private modalService: NgbModal) {}
+              private modalService: NgbModal,
+              private router: Router,
+              private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.activatedRoute.data.subscribe((data) => {
+      console.log(data);
+    });
+
     this.groupsss = Observable.interval(1000)
       .distinct()
       .debounceTime(2000)
