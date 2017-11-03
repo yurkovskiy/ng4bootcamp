@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 
-import { GroupsService } from '../groups/groups.service';
+import { GroupsService } from '../services/groups/groups.service';
 
 @Injectable()
 export class GroupsResolver implements Resolve<any> {
