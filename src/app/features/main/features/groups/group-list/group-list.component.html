@@ -1,7 +1,10 @@
 <h1>My groups</h1>
 <button (click)="addNew()">Add new subject</button>
-<input name="search" #search>
-<button (click)="filterGroups(search)">Search</button>
+<button (click)="changeFirst()">Change 1st</button>
 <a routerLink="2">Go to id 2</a>
 <router-outlet></router-outlet>
-
+<div *ngIf="groups.length > 0">
+  <app-group-item [data]="groups[0]" [test]="'test'">
+    <input name="test" #test />
+  </app-group-item>
+</div>

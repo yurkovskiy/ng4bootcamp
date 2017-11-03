@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, AfterViewInit, QueryList, ViewChildren} from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -10,19 +10,20 @@ import 'rxjs/add/operator/distinct';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/observable/interval';
 
+import { GroupItemComponent } from '../group-item/group-item.component';
 import { AddSubjectComponent } from '@shared/add-subject/add-subject.component';
 
 @Component({
   selector: 'app-group-list',
   templateUrl: './group-list.component.html'
 })
-export class GroupListComponent implements OnInit, OnDestroy {
+export class GroupListComponent implements OnInit, OnDestroy, AfterViewInit {
   groups: any[] = [];
   groupsss: any;
   searchText = '';
   private groups$: Subscription;
   private test$: Subscription;
-  @ViewChild('search') searchInput;
+  @ViewChildren(GroupItemComponent) items: QueryList<GroupItemComponent>;
 
   constructor(private groupsService: GroupsService,
               private modalService: NgbModal,
@@ -34,14 +35,7 @@ export class GroupListComponent implements OnInit, OnDestroy {
       console.log(data);
     });
 
-    this.groupsss = Observable.interval(1000)
-      .distinct()
-      .debounceTime(2000)
-      .switchMap(() => {
-        return this.groupsService.getGroups();
-      });
-
-    this.groups$ = this.groupsService.getGroups().subscribe(data => {
+    this.groupsService.getGroups().subscribe((data) => {
       this.groups = data;
     });
   }
@@ -49,6 +43,14 @@ export class GroupListComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.groups$.unsubscribe();
     // this.test$.unsubscribe();
+  }
+
+  ngAfterViewInit(): void {
+    console.log(this.items);
+  }
+
+  changeFirst(): void {
+    this.groups[0].group_name = 'testssss';
   }
 
   addNew() {
@@ -62,6 +64,6 @@ export class GroupListComponent implements OnInit, OnDestroy {
   }
 
   filterGroups() {
-    this.searchText = this.searchInput.nativeElement.value;
+    // this.searchText = this.searchInput.nativeElement.value;
   }
 }
