@@ -32,7 +32,7 @@ export class GroupListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe((data) => {
-      console.log(data);
+      // console.log(data);
     });
 
     this.groupsService.getGroups().subscribe((data) => {
@@ -46,7 +46,7 @@ export class GroupListComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log(this.items);
+    // console.log(this.items);
   }
 
   changeFirst(): void {

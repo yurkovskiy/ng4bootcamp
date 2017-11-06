@@ -3,6 +3,7 @@
 <button (click)="changeFirst()">Change 1st</button>
 <a routerLink="2">Go to id 2</a>
 <router-outlet></router-outlet>
+<app-add-group></app-add-group>
 <div *ngIf="groups.length > 0">
   <app-group-item [data]="groups[0]" [test]="'test'">
     <input name="test" #test />

@@ -20,11 +20,11 @@ export class GroupItemComponent implements OnInit, OnChanges, AfterContentInit, 
   }
 
   ngAfterContentInit(): void {
-    console.log(this.myInput);
+    // console.log(this.myInput);
   }
 
   ngAfterContentChecked(): void {
-    console.log(this.myInput);
+    // console.log(this.myInput);
   }
 
   ngOnChanges(data: SimpleChanges): void {
