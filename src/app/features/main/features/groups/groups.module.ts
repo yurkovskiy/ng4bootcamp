@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { GroupsRoutingModule } from './groups-routing.module';
 import { GroupListComponent } from './group-list/group-list.component';
@@ -9,6 +10,7 @@ import { AddGroupComponent } from './add-group/add-group.component';
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     GroupsRoutingModule
   ],
   declarations: [
