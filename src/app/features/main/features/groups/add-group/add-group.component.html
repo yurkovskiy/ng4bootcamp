@@ -1,5 +1,5 @@
 <form class="form-signin" #myForm="ngForm"
-      (ngSubmit)="saveData(myForm)" novalidate>
+      (ngSubmit)="saveData(myForm); myForm.reset()" novalidate>
   {{ classForm | json }}
   {{ myForm.value | json }}
   <div>
@@ -7,11 +7,14 @@
       <input type="email" name="email" class="form-control"
              maxlength="10"
              required
-             [ngModel]="classForm.email">
+             ngModel>
     <label class="sr-only">Password</label>
+    <!--<select>-->
+      <!--<option></option>-->
+    <!--</select>-->
     <input type="password" name="password" class="form-control"
            #password="ngModel"
-           required [ngModel]="classForm.password">
+           required ngModel>
     <p *ngIf="password?.errors?.required">Password is required</p>
   </div>
   <div class="checkbox">
