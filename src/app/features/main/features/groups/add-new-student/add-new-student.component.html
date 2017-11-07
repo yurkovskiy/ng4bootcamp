@@ -1,7 +1,22 @@
-<form class="form-signin" novalidate>
-    <label class="sr-only">Email address</label>
-    <input type="email" name="email" class="form-control">
-    <label class="sr-only">Password</label>
-    <input type="password" name="password" class="form-control">
+{{ form.valid }}
+<form class="form-signin" novalidate [formGroup]="form">
+  <label class="sr-only">Email address</label>
+  <input type="email"
+         name="email"
+         class="form-control"
+         formControlName="email">
+  <label class="sr-only">Password</label>
+  <input type="password"
+         name="password"
+         class="form-control"
+         formControlName="password">
+  <div formArrayName="addresses">
+    <input *ngFor="let a of addresses; let i = index" type="text"
+           name="password"
+           class="form-control"
+           formControlName="password">
   </div>
 </form>
+<button (click)="makeEnabled()">Make password enabled</button>
+<button (click)="setDefault()">Set default values</button>
+<button (click)="saveData()">Save</button>
