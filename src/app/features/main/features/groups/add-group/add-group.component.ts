@@ -16,10 +16,20 @@ export class AddGroupComponent implements OnInit {
     {id: 3, facultyId: 1, name: 'Third one'},
     {id: 4, facultyId: 2, name: 'Fourth'}
   ];
+  availableSpecs = [];
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onChange(event: HTMLSelectElement): void {
+    this.availableSpecs = [];
+    this.specialities.forEach(i => {
+      if (i.facultyId === parseInt(event.target.value, 10)) {
+        this.availableSpecs.push(i);
+      }
+    });
   }
 
   saveData(data): void {

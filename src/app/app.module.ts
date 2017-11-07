@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -28,7 +27,6 @@ import { SignInComponent } from './features/auth/sign-in/sign-in.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     HttpClientModule,
     NgbModule.forRoot(),
     AppRoutingModule

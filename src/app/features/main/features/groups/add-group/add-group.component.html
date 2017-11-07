@@ -2,7 +2,15 @@
       (ngSubmit)="saveData(myForm); myForm.reset()" novalidate>
   {{ classForm | json }}
   {{ myForm.value | json }}
-  <div>
+  <div [hidden]="true">
+    <select name="f" (change)="onChange($event)">
+      <option [value]="f.id"
+              *ngFor="let f of faculties">{{ f.name }}</option>
+    </select>
+    <select name="s">
+      <option [value]="s.id"
+              *ngFor="let s of availableSpecs" [hidden]="true">{{ s.name }}</option>
+    </select>
       <label class="sr-only">Email address</label>
       <input type="email" name="email" class="form-control"
              maxlength="10"
