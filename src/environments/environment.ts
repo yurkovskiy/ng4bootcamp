@@ -4,6 +4,6 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  apiUrl: 'http://vps9615.hyperhost.name:8080' ,
+  apiUrl: 'http://vps9615.hyperhost.name:443' ,
   production: false
 };

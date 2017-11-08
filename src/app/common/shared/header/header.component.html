@@ -1,10 +1,10 @@
 <nav class="navbar navbar-light bg-faded rounded">
   <ul class="navbar-nav mr-auto">
     <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link" routerLink="groups">Groups</a>
+      <a class="nav-link" routerLink="/main/groups">Groups</a>
     </li>
     <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link" routerLink="students">Students</a>
+      <a class="nav-link" routerLink="/main/students">Students</a>
     </li>
   </ul>
   <button *ngIf="!(isLoggedIn | async)" (click)="login(true)">Login</button>

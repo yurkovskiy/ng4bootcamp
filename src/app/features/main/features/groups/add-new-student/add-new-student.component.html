@@ -10,12 +10,6 @@
          name="password"
          class="form-control"
          formControlName="password">
-  <div formArrayName="addresses">
-    <input *ngFor="let a of addresses; let i = index" type="text"
-           name="password"
-           class="form-control"
-           formControlName="password">
-  </div>
 </form>
 <button (click)="makeEnabled()">Make password enabled</button>
 <button (click)="setDefault()">Set default values</button>
