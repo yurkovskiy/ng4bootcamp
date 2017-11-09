@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 export class GroupsService {
   constructor(private http: HttpClient) {}
 
-  getGroups() {
+  getGroups(a = 1) {
     return this.http.get<any[]>(`/group/getRecords`);
   }
 

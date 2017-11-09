@@ -1,6 +1,5 @@
 import {Component, OnInit, OnDestroy, AfterViewInit, QueryList, ViewChildren} from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { Router, ActivatedRoute } from '@angular/router';
 
 import { GroupsService } from '@core/services';
 import { Observable } from 'rxjs/Observable';
@@ -17,7 +16,8 @@ import { AddSubjectComponent } from '@shared/add-subject/add-subject.component';
   selector: 'app-group-list',
   templateUrl: './group-list.component.html'
 })
-export class GroupListComponent implements OnInit, OnDestroy, AfterViewInit {
+export class GroupListComponent implements OnInit {
+  a = 2;
   groups: any[] = [];
   groupsss: any;
   searchText = '';
@@ -26,27 +26,18 @@ export class GroupListComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChildren(GroupItemComponent) items: QueryList<GroupItemComponent>;
 
   constructor(private groupsService: GroupsService,
-              private modalService: NgbModal,
-              private router: Router,
-              private activatedRoute: ActivatedRoute) {}
+              private modalService: NgbModal) {}
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe((data) => {
-      // console.log(data);
-    });
-
     this.groupsService.getGroups().subscribe((data) => {
       this.groups = data;
     });
   }
 
-  ngOnDestroy(): void {
-    this.groups$.unsubscribe();
-    // this.test$.unsubscribe();
-  }
-
-  ngAfterViewInit(): void {
-    // console.log(this.items);
+  updateGroups() {
+    this.groupsService.getGroups(this.a).subscribe((data) => {
+      this.groups = data;
+    });
   }
 
   changeFirst(): void {
